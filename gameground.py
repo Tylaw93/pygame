@@ -27,13 +27,22 @@ class player(pygame.sprite.Sprite):
         self.pos = vec((10,385))
         self.vel = vec(0,0)
         self.acc = vec(0,0)
-        
+      
 class platform(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.surf = pygame.Surface((WIDTH, 20))
         self.surf.fill((255,0,0))
         self.rect = self.surf.get_rect(center = (WIDTH/2, HEIGHT - 10))
+        
+def move(self):
+    self.acc = vec(0,0)
+    pressed_keys = pygame.key.get_pressed()
+    
+    if pressed_keys[K_LEFT]:
+        self.acc.x = -ACC
+    if pressed_keys[K_RIGHT]:
+        self.acc.x = ACC
         
 PT1 = platform()
 P1 = player()
