@@ -24,6 +24,10 @@ class player(pygame.sprite.Sprite):
         self.surf.fill((128,255,40))
         self.rect = self.surf.get_rect(center = (10, 420))
         
+        self.pos = vec((10,385))
+        self.vel = vec(0,0)
+        self.acc = vec(0,0)
+        
 class platform(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
