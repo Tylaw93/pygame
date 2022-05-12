@@ -1,3 +1,4 @@
+import sys
 import pygame
 from pygame.locals import*
 
@@ -16,7 +17,7 @@ FramePerSec = pygame.time.Clock()
 displaysurface = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Game")
 
-class Player(pygame.sprite.Sprite):
+class player(pygame.sprite.Sprite):
     def __init__(self):
         super().__init__()
         self.surf = pygame.Surface((30,30))
@@ -31,5 +32,22 @@ class platform(pygame.sprite.Sprite):
         self.rect = self.surf.get_rect(center = (WIDTH/2, HEIGHT - 10))
         
 PT1 = platform()
-p1 = player()
+P1 = player()
 
+all_sprites = pygame.sprite.Group()
+all_sprites.add(PT1)
+all_sprites.add(P1)
+
+while True:
+    for event in pygame.event.get():
+        if event.type == QUIT:
+            pygame.quit()
+            sys.exit()
+            
+    displaysurface.fill((0,0,0))
+    
+    for entity in all_sprites:
+        displaysurface.blit(entity.surf, entity.rect)
+        
+    pygame.display.update()
+    FramePerSec.tick(FPS)
